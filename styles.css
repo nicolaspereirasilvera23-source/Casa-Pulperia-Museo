@@ -1,4 +1,35 @@
 /* ============================================================
+   Font faces
+   ============================================================ */
+@font-face{
+  font-family: "Ala";
+  src: url("fonts/Ala.woff2") format("woff2"),
+       url("fonts/Ala.woff") format("woff"),
+       url("fonts/Ala.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Tai Heritage Pro";
+  src: url("fonts/TaiHeritagePro-Regular.woff2") format("woff2"),
+       url("fonts/TaiHeritagePro-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "Tai Heritage Pro";
+  src: url("fonts/TaiHeritagePro-Bold.woff2") format("woff2"),
+       url("fonts/TaiHeritagePro-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================
    Casa-Pulpería Ezequiel Zamora — tokens
    ============================================================ */
 :root{
@@ -15,8 +46,8 @@
   --ledger-red:   #8B3A2F;
   --gold:         #C89B3C;
 
-  --font-display: "Fraunces", "Iowan Old Style", serif;
-  --font-body:    "Source Serif 4", Georgia, serif;
+  --font-display: "Ala", Georgia, serif;
+  --font-body:    "Tai Heritage Pro", Georgia, serif;
   --font-mono:    "Courier Prime", "Courier New", monospace;
 
   --container: 1160px;
@@ -44,7 +75,7 @@ h1, h2, h3{
   font-family: var(--font-display);
   color: var(--mahogany-dark);
   margin: 0 0 0.5em;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: -0.01em;
 }
 
@@ -171,7 +202,7 @@ a:focus-visible, button:focus-visible{
   line-height: 1.02;
   margin-bottom: 0.6em;
 }
-.hero-title span{ color: var(--ledger-red); font-style: italic; font-weight: 500; }
+.hero-title span{ color: var(--ledger-red); font-style: italic; font-weight: 400; }
 
 .hero-sub{
   font-size: 1.15rem;
