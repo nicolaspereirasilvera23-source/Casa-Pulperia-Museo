@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NEON CLASH - A 2D Cyberpunk Fighting Game Prototype built with HTML5 Canvas">
+    <title>NEON CLASH — Fighting Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Game Canvas -->
+        <canvas id="gameCanvas" width="1280" height="720"></canvas>
+
+        <!-- HUD Overlay -->
+        <div id="hud">
+            <!-- Player 1 HUD (left side) -->
+            <div class="health-container p1-hud">
+                <span class="player-name p1-name" id="p1-name">CYBER</span>
+                <div class="health-bar-bg">
+                    <div class="health-bar-fill" id="p1-health" style="width:100%"></div>
+                </div>
+                <div class="super-bar-bg" id="p1-super-bar">
+                    <div class="super-bar-fill" id="p1-super" style="width:0%"></div>
+                </div>
+            </div>
+
+            <!-- Timer -->
+            <div id="timer-container">
+                <div id="timer">99</div>
+            </div>
+
+            <!-- Player 2 HUD (right side) -->
+            <div class="health-container p2-hud">
+                <span class="player-name p2-name" id="p2-name">NEON</span>
+                <div class="health-bar-bg">
+                    <div class="health-bar-fill" id="p2-health" style="width:100%"></div>
+                </div>
+                <div class="super-bar-bg" id="p2-super-bar">
+                    <div class="super-bar-fill" id="p2-super" style="width:0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Screen Overlay -->
+        <div id="menu-overlay" class="screen-overlay active">
+            <h1 class="title-text">NEON CLASH</h1>
+            <div class="controls-container">
+                <div class="control-card p1-card">
+                    <div class="card-title">PLAYER 1</div>
+                    <div class="control-row"><span>Move</span><span class="key-badge">W A S D</span></div>
+                    <div class="control-row"><span>Light Attack</span><span class="key-badge">J</span></div>
+                    <div class="control-row"><span>Medium Attack</span><span class="key-badge">K</span></div>
+                    <div class="control-row"><span>Heavy Attack</span><span class="key-badge">L</span></div>
+                    <div class="control-row"><span>Block</span><span class="key-badge">Q</span></div>
+                    <div class="control-row"><span>Super</span><span class="key-badge">U</span></div>
+                </div>
+                <div class="control-card p2-card">
+                    <div class="card-title">PLAYER 2</div>
+                    <div class="control-row"><span>Move</span><span class="key-badge">Arrows</span></div>
+                    <div class="control-row"><span>Light Attack</span><span class="key-badge">Num 1</span></div>
+                    <div class="control-row"><span>Medium Attack</span><span class="key-badge">Num 2</span></div>
+                    <div class="control-row"><span>Heavy Attack</span><span class="key-badge">Num 3</span></div>
+                    <div class="control-row"><span>Block</span><span class="key-badge">Z</span></div>
+                    <div class="control-row"><span>Super</span><span class="key-badge">Num 0</span></div>
+                </div>
+            </div>
+            <div class="blink-text">PRESS ENTER TO FIGHT</div>
+        </div>
+
+        <!-- KO Screen Overlay -->
+        <div id="ko-overlay" class="screen-overlay">
+            <div class="ko-text">K.O.</div>
+            <div class="winner-text" id="winner-text">PLAYER WINS!</div>
+            <div class="blink-text">PRESS ENTER TO RESTART</div>
+        </div>
+
+        <!-- CRT Scanline Effect -->
+        <div class="scanlines"></div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
