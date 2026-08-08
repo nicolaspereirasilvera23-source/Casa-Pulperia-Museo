@@ -2,18 +2,18 @@
    Casa-Pulpería Ezequiel Zamora — tokens
    ============================================================ */
 :root{
-  --paper:        #F1E7D0;
-  --paper-dark:   #E5D6AF;
-  --paper-line:   #C9AE7B;
-  --ink:          #2A2016;
-  --ink-soft:     #5B4A36;
-  --mahogany:     #4A2E1E;
-  --mahogany-dark:#33200F;
-  --bronze:       #B07C3E;
-  --bronze-dark:  #8A5D2C;
-  --stone:        #D8CBAA;
-  --ledger-red:   #8B3A2F;
-  --gold:         #C89B3C;
+  --paper:        #FFFFFF;
+  --paper-dark:   #F6F6F6;
+  --paper-line:   #D6D6D6;
+  --ink:          #1B1B1B;
+  --ink-soft:     #555555;
+  --mahogany:     #1E3A8A;
+  --mahogany-dark:#122B6B;
+  --bronze:       #2F62D4;
+  --bronze-dark:  #1B3FA8;
+  --stone:        #E3E7EF;
+  --ledger-red:   #E03131;
+  --gold:         #F7B500;
 
   --font-display: "Fraunces", "Iowan Old Style", serif;
   --font-body:    "Source Serif 4", Georgia, serif;
@@ -101,12 +101,12 @@ a:focus-visible, button:focus-visible{
    ============================================================ */
 .site-header{
   position: sticky; top: 0; z-index: 200;
-  background: rgba(241, 231, 208, 0.92);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--paper-line);
   transition: box-shadow 0.3s ease;
 }
-.site-header.is-scrolled{ box-shadow: 0 6px 18px rgba(42,32,22,0.08); }
+.site-header.is-scrolled{ box-shadow: 0 6px 18px rgba(0,0,0,0.08); }
 
 .header-inner{
   max-width: var(--container);
@@ -150,8 +150,8 @@ a:focus-visible, button:focus-visible{
   text-align: center; overflow: hidden;
   padding: 6rem 1.5rem 4rem;
   background:
-    linear-gradient(180deg, rgba(241,231,208,0) 0%, var(--paper) 92%),
-    repeating-linear-gradient(0deg, transparent 0 38px, rgba(74,46,30,0.05) 38px 39px),
+    linear-gradient(180deg, rgba(255,255,255,0) 0%, var(--paper) 92%),
+    repeating-linear-gradient(0deg, transparent 0 38px, rgba(18,43,107,0.05) 38px 39px),
     var(--paper);
 }
 .hero-bg{ position: absolute; inset: 0; z-index: 0; }
@@ -171,7 +171,7 @@ a:focus-visible, button:focus-visible{
   line-height: 1.02;
   margin-bottom: 0.6em;
 }
-.hero-title span{ color: var(--ledger-red); font-style: italic; font-weight: 500; }
+.hero-title span{ color: var(--gold); font-style: italic; font-weight: 500; }
 
 .hero-sub{
   font-size: 1.15rem;
@@ -386,7 +386,7 @@ a:focus-visible, button:focus-visible{
   padding: 1.8rem 1.6rem;
   max-width: 380px; margin: 0 auto;
   font-family: var(--font-mono);
-  box-shadow: 0 8px 24px rgba(42,32,22,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 .receipt-title{
   text-align: center; text-transform: uppercase; letter-spacing: 0.14em;
@@ -411,7 +411,7 @@ a:focus-visible, button:focus-visible{
   display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: flex-start;
 }
 .footer-inner > div{ display: flex; gap: 0.8rem; align-items: flex-start; }
-.footer-inner p{ color: rgba(241,231,208,0.75); font-size: 0.85rem; margin: 0; }
+.footer-inner p{ color: rgba(255,255,255,0.8); font-size: 0.85rem; margin: 0; }
 .footer-note{ max-width: 42ch; font-style: italic; font-size: 0.78rem !important; }
 
 /* ============================================================
@@ -455,8 +455,8 @@ a:focus-visible, button:focus-visible{
   padding: clamp(4.5rem, 9vw, 7rem) 1.5rem 3.5rem;
   text-align: center; overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(241,231,208,0) 0%, var(--paper) 92%),
-    repeating-linear-gradient(0deg, transparent 0 38px, rgba(74,46,30,0.05) 38px 39px),
+    linear-gradient(180deg, rgba(255,255,255,0) 0%, var(--paper) 92%),
+    repeating-linear-gradient(0deg, transparent 0 38px, rgba(18,43,107,0.05) 38px 39px),
     var(--paper);
   border-bottom: 1px solid var(--paper-line);
 }
@@ -515,7 +515,7 @@ a:focus-visible, button:focus-visible{
   font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase;
   letter-spacing: 0.08em; color: var(--bronze-dark); margin-top: auto;
 }
-.page-card:hover .card-link{ color: var(--ledger-red); }
+.page-card:hover .card-link{ color: var(--gold); }
 
 @media (max-width: 760px){
   .page-cards{ grid-template-columns: 1fr; }
