@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Casa-Pulpería Ezequiel Zamora · Museo, Villa de Cura</title>
-<meta name="description" content="Casa-Pulpería del General del Pueblo Soberano Ezequiel Zamora. Museo y espacio cultural en Villa de Cura, estado Aragua, Venezuela.">
+<meta name="description" content="Casa-Pulpería del General del Pueblo Soberano Ezequiel Zamora. Museo y espacio cultural en Villa de Cura, estado Aragua, Venezuela. La casa, las salas, el patio y la cronología.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
@@ -19,15 +19,16 @@
 <header class="site-header" id="siteHeader">
   <div class="header-inner">
     <a href="#inicio" class="brand">
-      <img class="brand-logo" src="logo%20fachada-03.png" alt="Casa-Pulpería Ezequiel Zamora">
+      <img class="brand-logo" src="assets/logo%20fachada-03.png" alt="Casa-Pulpería Ezequiel Zamora">
     </a>
 
     <nav class="main-nav" id="mainNav">
-      <a href="#la-casa" class="nav-link">La Casa</a>
-      <a href="#salas" class="nav-link">Las Salas</a>
-      <a href="#patio" class="nav-link">El Patio</a>
-      <a href="#cronologia" class="nav-link">Cronología</a>
-      <a href="#visita" class="nav-link">Visítanos</a>
+      <a href="#inicio" class="nav-link">Inicio</a>
+      <a href="pages/la-casa.html" class="nav-link">La Casa</a>
+      <a href="pages/salas.html" class="nav-link">Las Salas</a>
+      <a href="pages/patio.html" class="nav-link">El Patio</a>
+      <a href="pages/cronologia.html" class="nav-link">Cronología</a>
+      <a href="pages/visita.html" class="nav-link">Visítanos</a>
     </nav>
 
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav">
@@ -42,10 +43,8 @@
   <section class="hero" id="inicio">
     <div class="hero-bg" aria-hidden="true">
       <svg class="hero-illustration" viewBox="0 0 900 700" preserveAspectRatio="xMidYMax slice">
-        <!-- llano horizon -->
         <rect x="0" y="480" width="900" height="220" fill="var(--mahogany)" opacity="0.08"/>
         <line x1="0" y1="480" x2="900" y2="480" stroke="var(--ink)" stroke-width="1.5" opacity="0.35"/>
-        <!-- pulperia facade, simple engraving-style -->
         <g stroke="var(--ink)" stroke-width="2" fill="none" opacity="0.55">
           <rect x="120" y="330" width="660" height="150"/>
           <line x1="120" y1="380" x2="780" y2="380"/>
@@ -57,243 +56,75 @@
           <rect x="670" y="390" width="80" height="90"/>
           <polygon points="100,330 450,255 800,330"/>
         </g>
-        <!-- Ezequiel Zamora portrait -->
         <ellipse cx="450" cy="474" rx="70" ry="9" fill="var(--ink)" opacity="0.18"/>
-        <image href="ezequielzamora.png" x="392" y="312" width="116" height="162" preserveAspectRatio="xMidYMax meet" opacity="0.95"/>
+        <image href="assets/ezequielzamora.png" x="392" y="312" width="116" height="162" preserveAspectRatio="xMidYMax meet" opacity="0.95"/>
       </svg>
     </div>
 
     <div class="hero-content">
       <p class="eyebrow">Museo &amp; espacio cultural &middot; Villa de Cura, estado Aragua</p>
-      
-      <p class="hero-sub">La antigua tienda del General del Pueblo Soberano, reconstruida como museo y café cultural, donde el pensamiento civil y la Guerra Federal se cuentan sala por sala.</p>
+      <h1 class="hero-title">La pulpería del<br>General del Pueblo Soberano</h1>
+      <p class="hero-sub">La antigua tienda de Ezequiel Zamora, reconstruida como museo y café cultural, donde el pensamiento civil y la Guerra Federal se cuentan sala por sala.</p>
       <div class="hero-actions">
-        <a href="#salas" class="btn btn-primary">Recorrer las salas</a>
-        <a href="#visita" class="btn btn-ghost">Planificar visita</a>
+        <a href="pages/salas.html" class="btn btn-primary">Recorrer las salas</a>
+        <a href="pages/visita.html" class="btn btn-ghost">Planificar visita</a>
       </div>
       <p class="hero-caption">Reinaugurada el 26 de mayo, junto al 304.º aniversario de la fundación de Villa de Cura.</p>
     </div>
 
-    <a href="#la-casa" class="scroll-cue" aria-label="Bajar a la siguiente sección">
+    <a href="#recorrido" class="scroll-cue" aria-label="Bajar a las secciones del recorrido">
       <span></span>
     </a>
   </section>
 
-  <!-- LA CASA -->
-  <section class="section la-casa" id="la-casa">
-    <div class="section-inner two-col">
-      <div class="col-text reveal">
-        <p class="kicker">01 &middot; La Casa</p>
-        <h2>Donde el general llevaba las cuentas del pueblo</h2>
-        <p>Antes de ser museo, esta esquina de Villa de Cura fue la pulpería de Ezequiel Zamora: el comercio donde el futuro "General del Pueblo Soberano" despachaba mercancía, escuchaba al campesinado y maduraba las ideas que después llevaría a la guerra.</p>
-        <p>El Instituto de Patrimonio Cultural devolvió la infraestructura a su vocación original de encuentro: hoy funciona como <strong>museo, café y patio público</strong>, un espacio pensado para que la comunidad se reconozca en su propia historia, no solo para exhibirla detrás de un vidrio.</p>
-        <div class="pull-quote">
-          <p>«Un espacio de memoria para fortalecer la venezolanidad: cuanto más conocemos nuestra historia, mejor entendemos de dónde viene ese espíritu del pueblo.»</p>
-          <cite>— Palabras del acto de inauguración, Villa de Cura, mayo de 2026</cite>
-        </div>
-      </div>
-      <div class="col-figure reveal" aria-hidden="true">
-        <div class="ledger-card">
-          <div class="ledger-card-row"><span>Fundación de Villa de Cura</span><span class="ledger-num">1722</span></div>
-          <div class="ledger-card-row"><span>Juan de Bolívar y Martínez, fundador</span><span class="ledger-num">&mdash;</span></div>
-          <div class="ledger-card-row"><span>Apodo de la ciudad</span><span class="ledger-num">Puerta del Llano</span></div>
-          <div class="ledger-card-row"><span>Restauración de la Casa-Pulpería</span><span class="ledger-num">2026</span></div>
-          <div class="ledger-card-row total"><span>Aniversario de la ciudad al reabrir</span><span class="ledger-num">304 años</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SALAS -->
-  <section class="section salas" id="salas">
+  <!-- RECORRIDO -->
+  <section class="section overview" id="recorrido">
     <div class="section-inner">
-      <p class="kicker center">02 &middot; Las Salas</p>
-      <h2 class="center">Dos salas, dos tiempos de un mismo hombre</h2>
-      <p class="section-lead center">El recorrido está dividido como un libro de cuentas: una página para el comerciante y pensador, otra para el guerrero. Elegí una sala para abrirla.</p>
+      <p class="kicker center">El recorrido</p>
+      <h2 class="center">Cinco paradas, una misma historia</h2>
+      <p class="section-lead center">Elegí una sala del libro de cuentas. Cada página abre su propia sección de la casa.</p>
 
-      <div class="book" id="book">
-        <div class="book-tabs" role="tablist" aria-label="Salas del museo">
-          <button class="book-tab is-active" role="tab" aria-selected="true" aria-controls="sala-1" id="tab-1" data-sala="1">
-            <span class="tab-num">Sala I</span>
-            <span class="tab-name">Pensamiento Civil</span>
-            <span class="tab-years">1817&ndash;1847</span>
-          </button>
-          <button class="book-tab" role="tab" aria-selected="false" aria-controls="sala-2" id="tab-2" data-sala="2">
-            <span class="tab-num">Sala II</span>
-            <span class="tab-name">El Guerrero Federal</span>
-            <span class="tab-years">1848&ndash;1860</span>
-          </button>
-        </div>
+      <div class="page-cards">
+        <a class="page-card reveal" href="pages/la-casa.html">
+          <span class="card-num">01 &middot; La Casa</span>
+          <h3>Donde el general llevaba las cuentas del pueblo</h3>
+          <p>De pulpería a museo: el comercio donde Zamora escuchaba al campesinado y maduraba una idea de igualdad.</p>
+          <span class="card-link">Entrar a la casa &rarr;</span>
+        </a>
 
-        <div class="book-pages">
-          <article class="book-page is-active" id="sala-1" role="tabpanel" aria-labelledby="tab-1">
-            <div class="page-spine" aria-hidden="true"></div>
-            <div class="page-content">
-              <h3>Sala I &middot; Pensamiento Civil <span>(1817&ndash;1847)</span></h3>
-              <p>Reconstruye los años de formación de Zamora: su infancia en Cúa, su llegada a Villa de Cura como comerciante y el modo en que, detrás del mostrador de la pulpería, fue tejiendo una idea de igualdad que lo acercaría a las protestas campesinas de la época.</p>
-              <p>Ahí nace la consigna que lo acompañaría el resto de su vida y le dio el título de "General del Pueblo Soberano": <strong>«Tierra y hombres libres».</strong></p>
-              <ul class="page-facts">
-                <li><span>Oficio</span> Comerciante y pulpero en Villa de Cura</li>
-                <li><span>Consigna</span> "Tierra y hombres libres"</li>
-                <li><span>Hito</span> Alzamiento campesino de 1846</li>
-              </ul>
-            </div>
-          </article>
+        <a class="page-card reveal" href="pages/salas.html">
+          <span class="card-num">02 &middot; Las Salas</span>
+          <h3>Dos salas, dos tiempos de un mismo hombre</h3>
+          <p>Pensamiento Civil (1817&ndash;1847) y El Guerrero Federal (1848&ndash;1860): la página del comerciante y la del guerrero.</p>
+          <span class="card-link">Abrir las salas &rarr;</span>
+        </a>
 
-          <article class="book-page" id="sala-2" role="tabpanel" aria-labelledby="tab-2">
-            <div class="page-spine" aria-hidden="true"></div>
-            <div class="page-content">
-              <h3>Sala II &middot; El Guerrero Federal <span>(1848&ndash;1860)</span></h3>
-              <p>Documenta al Zamora militar: su liderazgo en la Guerra Federal desde 1859, la organización de gobiernos provisionales en Coro y Barinas, y su triunfo táctico en la batalla de Santa Inés, una de las acciones más recordadas de esa guerra.</p>
-              <p>La sala cierra con el final de sus operaciones militares en San Carlos, estado Cojedes, donde murió en enero de 1860, y con una réplica del último número del periódico <em>El Venezolano</em>.</p>
-              <ul class="page-facts">
-                <li><span>Cargo</span> Jefe de Operaciones de Occidente</li>
-                <li><span>Batalla clave</span> Santa Inés, 10 de diciembre de 1859</li>
-                <li><span>Pieza exhibida</span> Réplica de "El Venezolano"</li>
-              </ul>
-            </div>
-          </article>
-        </div>
+        <a class="page-card reveal" href="pages/patio.html">
+          <span class="card-num">03 &middot; El Patio</span>
+          <h3>El general vuelve a su tienda</h3>
+          <p>La escultura que corona el recorrido, la plaza cubierta y el café museo, el punto de encuentro de la ciudad.</p>
+          <span class="card-link">Visitar el patio &rarr;</span>
+        </a>
+
+        <a class="page-card reveal" href="pages/cronologia.html">
+          <span class="card-num">04 &middot; Cronología</span>
+          <h3>De la pulpería a la Guerra Federal</h3>
+          <p>Una línea de tiempo del general: de su nacimiento en Cúa a su muerte en San Carlos, pasando por Santa Inés.</p>
+          <span class="card-link">Leer los años &rarr;</span>
+        </a>
+
+        <a class="page-card reveal" href="pages/visita.html">
+          <span class="card-num">05 &middot; Visítanos</span>
+          <h3>Coordená tu recorrido</h3>
+          <p>Datos para planificar la visita a la Casa-Pulpería en el centro de Villa de Cura, estado Aragua.</p>
+          <span class="card-link">Planificar la visita &rarr;</span>
+        </a>
       </div>
-    </div>
-  </section>
 
-  <!-- PATIO -->
-  <section class="section patio" id="patio">
-    <div class="section-inner two-col reverse">
-      <div class="col-figure reveal" aria-hidden="true">
-        <div class="statue-frame">
-          <svg viewBox="0 0 400 460">
-            <ellipse cx="200" cy="430" rx="150" ry="14" fill="var(--ink)" opacity="0.15"/>
-            <rect x="130" y="380" width="140" height="46" fill="var(--stone)" />
-            <rect x="150" y="350" width="100" height="34" fill="var(--stone)" />
-            <g fill="var(--bronze-dark)">
-              <path d="M150 350 C146 300 158 260 200 240 C192 224 200 204 220 198 C238 193 254 202 258 220 C282 216 302 228 306 250 L308 300 C334 296 356 310 358 332 L358 348 C358 356 350 360 342 360 L158 360 C150 360 146 356 146 350 Z"/>
-              <path d="M250 195 C250 178 262 164 278 162 C292 160 302 170 300 184 C298 196 288 204 276 204" fill="none" stroke="var(--bronze-dark)" stroke-width="6" stroke-linecap="round"/>
-              <circle cx="292" cy="168" r="16"/>
-            </g>
-          </svg>
-          <p class="statue-caption">Monumento a Ezequiel Zamora, patio central de la Casa-Pulpería</p>
-        </div>
-      </div>
-      <div class="col-text reveal">
-        <p class="kicker">03 &middot; El Patio Central</p>
-        <h2>El general vuelve a su tienda</h2>
-        <p>En el centro de la casa, alrededor del antiguo mostrador convertido en plaza cubierta, se levanta la escultura de Ezequiel Zamora que corona el recorrido. Es el punto donde termina la visita a las salas y empieza la vida social del espacio: conciertos, charlas y el café del museo.</p>
-        <p>El patio recuerda además que Villa de Cura, "Puerta del Llano", fue uno de los puntos de operación de Zamora durante la Guerra Federal en el siglo XIX &mdash; y que hoy sigue siendo el punto de encuentro de la ciudad.</p>
-        <div class="tag-row">
-          <span class="wax-seal">Café Museo</span>
-          <span class="wax-seal">Plaza cubierta</span>
-          <span class="wax-seal">Escultura conmemorativa</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CRONOLOGIA -->
-  <section class="section cronologia" id="cronologia">
-    <div class="section-inner">
-      <p class="kicker center">04 &middot; Cronología</p>
-      <h2 class="center">De la pulpería a la Guerra Federal</h2>
-      <p class="section-lead center">Tocá cada año del libro de cuentas para leer el detalle.</p>
-
-      <ol class="timeline" id="timeline">
-        <li class="timeline-item" data-open="false">
-          <button class="timeline-toggle">
-            <span class="timeline-year">1817</span>
-            <span class="timeline-title">Nace en Cúa, estado Miranda</span>
-            <span class="timeline-plus" aria-hidden="true">+</span>
-          </button>
-          <div class="timeline-detail">
-            <p>Ezequiel Zamora nace el 1.º de febrero de 1817 en Cúa, hijo de una familia de comerciantes de recursos modestos.</p>
-          </div>
-        </li>
-        <li class="timeline-item" data-open="false">
-          <button class="timeline-toggle">
-            <span class="timeline-year">1846</span>
-            <span class="timeline-title">Alzamiento campesino: "Tierra y hombres libres"</span>
-            <span class="timeline-plus" aria-hidden="true">+</span>
-          </button>
-          <div class="timeline-detail">
-            <p>El 7 de septiembre se levanta en armas con la consigna que lo definiría: reparto de tierras y respeto al campesinado. De ahí nace su título, "General del Pueblo Soberano".</p>
-          </div>
-        </li>
-        <li class="timeline-item" data-open="false">
-          <button class="timeline-toggle">
-            <span class="timeline-year">1847</span>
-            <span class="timeline-title">Condena y conmutación en Villa de Cura</span>
-            <span class="timeline-plus" aria-hidden="true">+</span>
-          </button>
-          <div class="timeline-detail">
-            <p>Tras ser capturado, un tribunal de Villa de Cura lo condena a muerte en julio; el presidente José Tadeo Monagas le conmuta la pena y lo incorpora al ejército regular.</p>
-          </div>
-        </li>
-        <li class="timeline-item" data-open="false">
-          <button class="timeline-toggle">
-            <span class="timeline-year">1856</span>
-            <span class="timeline-title">Matrimonio con Estefanía Falcón</span>
-            <span class="timeline-plus" aria-hidden="true">+</span>
-          </button>
-          <div class="timeline-detail">
-            <p>Se casa con Estefanía Falcón, hermana de Juan Crisóstomo Falcón, fortaleciendo su vínculo con el liderazgo liberal que tres años después encabezaría la Guerra Federal.</p>
-          </div>
-        </li>
-        <li class="timeline-item" data-open="false">
-          <button class="timeline-toggle">
-            <span class="timeline-year">1859</span>
-            <span class="timeline-title">Estalla la Guerra Federal</span>
-            <span class="timeline-plus" aria-hidden="true">+</span>
-          </button>
-          <div class="timeline-detail">
-            <p>Desembarca en La Vela de Coro, organiza un gobierno provisional y avanza como Jefe de Operaciones de Occidente al frente de un ejército campesino que lo llama "General de hombres libres".</p>
-          </div>
-        </li>
-        <li class="timeline-item" data-open="false">
-          <button class="timeline-toggle">
-            <span class="timeline-year">Dic. 1859</span>
-            <span class="timeline-title">Batalla de Santa Inés</span>
-            <span class="timeline-plus" aria-hidden="true">+</span>
-          </button>
-          <div class="timeline-detail">
-            <p>El 10 de diciembre derrota al ejército centralista en Santa Inés, considerada una de las victorias más importantes de la Guerra Federal.</p>
-          </div>
-        </li>
-        <li class="timeline-item" data-open="false">
-          <button class="timeline-toggle">
-            <span class="timeline-year">1860</span>
-            <span class="timeline-title">Muere en San Carlos, estado Cojedes</span>
-            <span class="timeline-plus" aria-hidden="true">+</span>
-          </button>
-          <div class="timeline-detail">
-            <p>El 10 de enero de 1860 muere en San Carlos durante el sitio de la ciudad. Sus restos descansan en el Panteón Nacional desde 1872.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- VISITA -->
-  <section class="section visita" id="visita">
-    <div class="section-inner two-col">
-      <div class="col-text reveal">
-        <p class="kicker">05 &middot; Visítanos</p>
-        <h2>Coordená tu recorrido</h2>
-        <p>La Casa-Pulpería está en el centro de Villa de Cura, municipio Zamora, estado Aragua &mdash; a la vera de la plaza que hoy vuelve a llevar el nombre del general.</p>
-        <p class="note">Esta página es una demo de landing sobre el museo: los horarios y datos de contacto que siguen son referenciales. Antes de viajar, confirmalos en los canales oficiales del Ministerio del Poder Popular para la Cultura o del Instituto de Patrimonio Cultural.</p>
-        <div class="hero-actions">
-          <a href="#" class="btn btn-primary" id="ctaContacto">Solicitar información</a>
-        </div>
-      </div>
-      <div class="col-figure reveal">
-        <div class="receipt">
-          <p class="receipt-title">Boleto de entrada</p>
-          <div class="receipt-line"><span>Museo</span><span>Casa&#8209;Pulpería Ezequiel Zamora</span></div>
-          <div class="receipt-line"><span>Ciudad</span><span>Villa de Cura</span></div>
-          <div class="receipt-line"><span>Municipio</span><span>Zamora, Aragua</span></div>
-          <div class="receipt-line"><span>Salas</span><span>Pensamiento Civil &middot; Guerrero Federal</span></div>
-          <div class="receipt-line"><span>Servicios</span><span>Museo &middot; Café &middot; Patio</span></div>
-          <div class="receipt-divider" aria-hidden="true"></div>
-          <p class="receipt-footer">Conservá este boleto &mdash; entrada válida para un recorrido completo</p>
+      <div class="page-foot">
+        <div class="page-foot-inner">
+          <span>Museo &middot; Café &middot; Patio</span>
+          <a class="page-foot-link" href="pages/visita.html">Solicitar información &rarr;</a>
         </div>
       </div>
     </div>
@@ -304,10 +135,10 @@
 <footer class="site-footer">
   <div class="footer-inner">
     <div>
-      <img class="brand-logo small" src="logo%20fachada-03.png" alt="Casa-Pulpería Ezequiel Zamora">
+      <img class="brand-logo small" src="assets/logo%20fachada-03.png" alt="Casa-Pulpería Ezequiel Zamora">
       <p>Casa&#8209;Pulpería Ezequiel Zamora<br>Villa de Cura, estado Aragua, Venezuela</p>
     </div>
-    <p class="footer-note">Demo de landing page construida a partir de información pública sobre la inauguración del museo (mayo de 2026) y la biografía de Ezequiel Zamora. Sitio no oficial, con fines de maquetado.</p>
+    <p class="footer-note">Demo de landing construida a partir de información pública sobre la inauguración del museo (mayo de 2026) y la biografía de Ezequiel Zamora. Sitio no oficial, con fines de maquetado &mdash; cada sección vive en su propia página dentro de <code>pages/</code>.</p>
   </div>
 </footer>
 
