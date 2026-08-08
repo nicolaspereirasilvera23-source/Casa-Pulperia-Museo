@@ -3,24 +3,48 @@
    ============================================================ */
 :root{
   --paper:        #FFFFFF;
-  --paper-dark:   #F6F6F6;
-  --paper-line:   #D6D6D6;
+  --paper-dark:   #F8F6F1;
+  --paper-line:   #DCD6C8;
   --ink:          #1B1B1B;
-  --ink-soft:     #555555;
-  --mahogany:     #1E3A8A;
-  --mahogany-dark:#122B6B;
-  --bronze:       #2F62D4;
-  --bronze-dark:  #1B3FA8;
-  --stone:        #E3E7EF;
-  --ledger-red:   #E03131;
-  --gold:         #F7B500;
+  --ink-soft:     #55524C;
+  --mahogany:     #92063C;
+  --mahogany-dark:#6E042E;
+  --bronze:       #1451F5;
+  --bronze-dark:  #0F3AB3;
+  --stone:        #E6D8BD;
+  --ledger-red:   #FF293C;
+  --gold:         #F0C333;
+  --clay:         #9F432C;
 
-  --font-display: "Fraunces", "Iowan Old Style", serif;
-  --font-body:    "Source Serif 4", Georgia, serif;
+  --font-display: "Ala", "Fraunces", Georgia, serif;
+  --font-body:    "Tai Heritage Pro", "Source Serif 4", Georgia, serif;
   --font-mono:    "Courier Prime", "Courier New", monospace;
 
   --container: 1160px;
   --radius: 2px;
+}
+
+/* ============================================================
+   Museo — fuentes propietarias (ALA y Tai Heritage Pro)
+   Archivos esperados en assets/fonts/
+   ============================================================ */
+@font-face{
+  font-family: "Ala";
+  src: url("assets/fonts/Ala-Regular.woff2") format("woff2"),
+       url("assets/fonts/Ala-Regular.woff") format("woff");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face{
+  font-family: "Ala";
+  src: url("assets/fonts/Ala-Bold.woff2") format("woff2"),
+       url("assets/fonts/Ala-Bold.woff") format("woff");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face{
+  font-family: "Tai Heritage Pro";
+  src: url("assets/fonts/TaiHeritagePro-Regular.woff2") format("woff2"),
+       url("assets/fonts/TaiHeritagePro-Regular.woff") format("woff");
+  font-weight: 400; font-style: normal; font-display: swap;
 }
 
 *, *::before, *::after{ box-sizing: border-box; }
@@ -46,6 +70,7 @@ h1, h2, h3{
   margin: 0 0 0.5em;
   font-weight: 600;
   letter-spacing: -0.01em;
+  text-transform: uppercase;
 }
 
 p{ margin: 0 0 1em; color: var(--ink-soft); }
@@ -162,7 +187,7 @@ a:focus-visible, button:focus-visible{
 .eyebrow{
   font-family: var(--font-mono);
   text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem;
-  color: var(--bronze-dark);
+  color: var(--clay);
   margin-bottom: 1.2rem;
 }
 
@@ -274,7 +299,7 @@ a:focus-visible, button:focus-visible{
 }
 .book-tab.is-active{ opacity: 1; transform: translateY(0); background: var(--paper); box-shadow: 0 -2px 0 var(--ledger-red) inset; }
 .tab-num{ font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ledger-red); }
-.tab-name{ font-family: var(--font-display); font-size: 1.05rem; color: var(--mahogany-dark); }
+.tab-name{ font-family: var(--font-display); font-size: 1.05rem; color: var(--mahogany-dark); text-transform: uppercase; }
 .tab-years{ font-family: var(--font-mono); font-size: 0.76rem; color: var(--ink-soft); }
 
 .book-pages{
@@ -358,7 +383,7 @@ a:focus-visible, button:focus-visible{
   font-family: var(--font-mono); color: var(--ledger-red); font-size: 0.95rem;
   flex-shrink: 0; width: 5.5em;
 }
-.timeline-title{ flex: 1; font-family: var(--font-display); font-size: 1.08rem; color: var(--mahogany-dark); }
+.timeline-title{ flex: 1; font-family: var(--font-display); font-size: 1.08rem; color: var(--mahogany-dark); text-transform: uppercase; }
 .timeline-plus{
   font-family: var(--font-mono); font-size: 1.2rem; color: var(--ink-soft);
   transition: transform 0.25s ease;
