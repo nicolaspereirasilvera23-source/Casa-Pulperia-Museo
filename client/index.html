@@ -1,147 +1,227 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Casa-Pulpería Ezequiel Zamora · Museo, Villa de Cura</title>
-<meta name="description" content="Casa-Pulpería del General del Pueblo Soberano Ezequiel Zamora. Museo y espacio cultural en Villa de Cura, estado Aragua, Venezuela. La casa, las salas, el patio y la cronología.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casa-Pulpería Ezequiel Zamora · Museo, Villa de Cura</title>
+    <meta
+      name="description"
+      content="Casa-Pulpería del General del Pueblo Soberano Ezequiel Zamora. Museo y espacio cultural en Villa de Cura, estado Aragua, Venezuela. La casa, las salas, el patio y la cronología." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Courier+Prime:wght@400;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grain-overlay" aria-hidden="true"></div>
 
-<div class="grain-overlay" aria-hidden="true"></div>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-<a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <header class="site-header" id="siteHeader">
+      <div class="header-inner">
+        <a href="#inicio" class="brand">
+          <img
+            class="brand-logo"
+            src="assets/logo%20fachada-03.png"
+            alt="Casa-Pulpería Ezequiel Zamora" />
+        </a>
 
-<header class="site-header" id="siteHeader">
-  <div class="header-inner">
-    <a href="#inicio" class="brand">
-      <img class="brand-logo" src="assets/logo%20fachada-03.png" alt="Casa-Pulpería Ezequiel Zamora">
-    </a>
+        <nav class="main-nav" id="mainNav">
+          <a href="#inicio" class="nav-link">Inicio</a>
+          <a href="pages/la-casa.html" class="nav-link">La Casa</a>
+          <a href="pages/salas.html" class="nav-link">Las Salas</a>
+          <a href="pages/patio.html" class="nav-link">El Patio</a>
+          <a href="pages/cronologia.html" class="nav-link">Cronología</a>
+          <a href="pages/visita.html" class="nav-link">Visítanos</a>
+        </nav>
 
-    <nav class="main-nav" id="mainNav">
-      <a href="#inicio" class="nav-link">Inicio</a>
-      <a href="pages/la-casa.html" class="nav-link">La Casa</a>
-      <a href="pages/salas.html" class="nav-link">Las Salas</a>
-      <a href="pages/patio.html" class="nav-link">El Patio</a>
-      <a href="pages/cronologia.html" class="nav-link">Cronología</a>
-      <a href="pages/visita.html" class="nav-link">Visítanos</a>
-    </nav>
-
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<main id="contenido">
-
-  <!-- HERO -->
-  <section class="hero" id="inicio">
-    <div class="hero-bg" aria-hidden="true">
-      <svg class="hero-illustration" viewBox="0 0 900 700" preserveAspectRatio="xMidYMax slice">
-        <rect x="0" y="480" width="900" height="220" fill="var(--mahogany)" opacity="0.08"/>
-        <line x1="0" y1="480" x2="900" y2="480" stroke="var(--ink)" stroke-width="1.5" opacity="0.35"/>
-        <g stroke="var(--ink)" stroke-width="2" fill="none" opacity="0.55">
-          <rect x="120" y="330" width="660" height="150"/>
-          <line x1="120" y1="380" x2="780" y2="380"/>
-          <rect x="160" y="390" width="70" height="90"/>
-          <rect x="260" y="390" width="70" height="90"/>
-          <rect x="360" y="390" width="70" height="90"/>
-          <rect x="470" y="390" width="80" height="90"/>
-          <rect x="570" y="390" width="70" height="90"/>
-          <rect x="670" y="390" width="80" height="90"/>
-          <polygon points="100,330 450,255 800,330"/>
-        </g>
-        <ellipse cx="450" cy="474" rx="70" ry="9" fill="var(--ink)" opacity="0.18"/>
-        <image href="assets/ezequielzamora.png" x="392" y="312" width="116" height="162" preserveAspectRatio="xMidYMax meet" opacity="0.95"/>
-      </svg>
-    </div>
-
-    <div class="hero-content">
-      <p class="eyebrow">Museo &amp; espacio cultural &middot; Villa de Cura, estado Aragua</p>
-      <h1 class="hero-title">La pulpería del <span>General del Pueblo Soberano</span></h1>
-      <p class="hero-sub">La antigua tienda de Ezequiel Zamora, reconstruida como museo y café cultural, donde el pensamiento civil y la Guerra Federal se cuentan sala por sala.</p>
-      <div class="hero-actions">
-        <a href="pages/salas.html" class="btn btn-primary">Recorrer las salas</a>
-        <a href="pages/visita.html" class="btn btn-ghost">Planificar visita</a>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="mainNav">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <p class="hero-caption">Reinaugurada el 26 de mayo, junto al 304.º aniversario de la fundación de Villa de Cura.</p>
-    </div>
+    </header>
 
-    <a href="#recorrido" class="scroll-cue" aria-label="Bajar a las secciones del recorrido">
-      <span></span>
-    </a>
-  </section>
-
-  <!-- RECORRIDO -->
-  <section class="section overview" id="recorrido">
-    <div class="section-inner">
-      <p class="kicker center">El recorrido</p>
-      <h2 class="center">Cinco paradas, una misma historia</h2>
-      <p class="section-lead center">Elegí una sala del libro de cuentas. Cada página abre su propia sección de la casa.</p>
-
-      <div class="page-cards">
-        <a class="page-card reveal" href="pages/la-casa.html">
-          <span class="card-num">01 &middot; La Casa</span>
-          <h3>Donde el general llevaba las cuentas del pueblo</h3>
-          <p>De pulpería a museo: el comercio donde Zamora escuchaba al campesinado y maduraba una idea de igualdad.</p>
-          <span class="card-link">Entrar a la casa &rarr;</span>
-        </a>
-
-        <a class="page-card reveal" href="pages/salas.html">
-          <span class="card-num">02 &middot; Las Salas</span>
-          <h3>Dos salas, dos tiempos de un mismo hombre</h3>
-          <p>Pensamiento Civil (1817&ndash;1847) y El Guerrero Federal (1848&ndash;1860): la página del comerciante y la del guerrero.</p>
-          <span class="card-link">Abrir las salas &rarr;</span>
-        </a>
-
-        <a class="page-card reveal" href="pages/patio.html">
-          <span class="card-num">03 &middot; El Patio</span>
-          <h3>El general vuelve a su tienda</h3>
-          <p>La escultura que corona el recorrido, la plaza cubierta y el café museo, el punto de encuentro de la ciudad.</p>
-          <span class="card-link">Visitar el patio &rarr;</span>
-        </a>
-
-        <a class="page-card reveal" href="pages/cronologia.html">
-          <span class="card-num">04 &middot; Cronología</span>
-          <h3>De la pulpería a la Guerra Federal</h3>
-          <p>Una línea de tiempo del general: de su nacimiento en Cúa a su muerte en San Carlos, pasando por Santa Inés.</p>
-          <span class="card-link">Leer los años &rarr;</span>
-        </a>
-
-        <a class="page-card reveal" href="pages/visita.html">
-          <span class="card-num">05 &middot; Visítanos</span>
-          <h3>Coordená tu recorrido</h3>
-          <p>Datos para planificar la visita a la Casa-Pulpería en el centro de Villa de Cura, estado Aragua.</p>
-          <span class="card-link">Planificar la visita &rarr;</span>
-        </a>
-      </div>
-
-      <div class="page-foot">
-        <div class="page-foot-inner">
-          <span>Museo &middot; Café &middot; Patio</span>
-          <a class="page-foot-link" href="pages/visita.html">Solicitar información &rarr;</a>
+    <main id="contenido">
+      <!-- HERO -->
+      <section class="hero" id="inicio">
+        <div class="hero-bg" aria-hidden="true">
+          <svg
+            class="hero-illustration"
+            viewBox="0 0 900 700"
+            preserveAspectRatio="xMidYMax slice">
+            <rect
+              x="0"
+              y="480"
+              width="900"
+              height="220"
+              fill="var(--mahogany)"
+              opacity="0.08" />
+            <line
+              x1="0"
+              y1="480"
+              x2="900"
+              y2="480"
+              stroke="var(--ink)"
+              stroke-width="1.5"
+              opacity="0.35" />
+            <g stroke="var(--ink)" stroke-width="2" fill="none" opacity="0.55">
+              <rect x="120" y="330" width="660" height="150" />
+              <line x1="120" y1="380" x2="780" y2="380" />
+              <rect x="160" y="390" width="70" height="90" />
+              <rect x="260" y="390" width="70" height="90" />
+              <rect x="360" y="390" width="70" height="90" />
+              <rect x="470" y="390" width="80" height="90" />
+              <rect x="570" y="390" width="70" height="90" />
+              <rect x="670" y="390" width="80" height="90" />
+              <polygon points="100,330 450,255 800,330" />
+            </g>
+            <ellipse
+              cx="450"
+              cy="474"
+              rx="70"
+              ry="9"
+              fill="var(--ink)"
+              opacity="0.18" />
+            <!-- <image href="assets/ezequielzamora.png" x="392" y="312" width="116" height="162" preserveAspectRatio="xMidYMax meet" opacity="0.95"/> -->
+          </svg>
         </div>
+
+        <div class="hero-content">
+          <p class="eyebrow">
+            Museo &amp; espacio cultural &middot; Villa de Cura, estado Aragua
+          </p>
+          <h1 class="hero-title">
+            La pulpería del <span>General del Pueblo Soberano</span>
+          </h1>
+          <p class="hero-sub">
+            La antigua tienda de Ezequiel Zamora, reconstruida como museo y café
+            cultural, donde el pensamiento civil y la Guerra Federal se cuentan
+            sala por sala.
+          </p>
+          <div class="hero-actions">
+            <a href="pages/salas.html" class="btn btn-primary"
+              >Recorrer las salas</a
+            >
+            <a href="pages/visita.html" class="btn btn-ghost"
+              >Planificar visita</a
+            >
+          </div>
+          <p class="hero-caption">
+            Reinaugurada el 26 de mayo, junto al 304.º aniversario de la
+            fundación de Villa de Cura.
+          </p>
+        </div>
+
+        <a
+          href="#recorrido"
+          class="scroll-cue"
+          aria-label="Bajar a las secciones del recorrido">
+          <span></span>
+        </a>
+      </section>
+
+      <!-- RECORRIDO -->
+      <section class="section overview" id="recorrido">
+        <div class="section-inner">
+          <p class="kicker center">El recorrido</p>
+          <h2 class="center">Cinco paradas, una misma historia</h2>
+          <p class="section-lead center">
+            Elegí una sala del libro de cuentas. Cada página abre su propia
+            sección de la casa.
+          </p>
+
+          <div class="page-cards">
+            <a class="page-card reveal" href="pages/la-casa.html">
+              <span class="card-num">01 &middot; La Casa</span>
+              <h3>Donde el general llevaba las cuentas del pueblo</h3>
+              <p>
+                De pulpería a museo: el comercio donde Zamora escuchaba al
+                campesinado y maduraba una idea de igualdad.
+              </p>
+              <span class="card-link">Entrar a la casa &rarr;</span>
+            </a>
+
+            <a class="page-card reveal" href="pages/salas.html">
+              <span class="card-num">02 &middot; Las Salas</span>
+              <h3>Dos salas, dos tiempos de un mismo hombre</h3>
+              <p>
+                Pensamiento Civil (1817&ndash;1847) y El Guerrero Federal
+                (1848&ndash;1860): la página del comerciante y la del guerrero.
+              </p>
+              <span class="card-link">Abrir las salas &rarr;</span>
+            </a>
+
+            <a class="page-card reveal" href="pages/patio.html">
+              <span class="card-num">03 &middot; El Patio</span>
+              <h3>El general vuelve a su tienda</h3>
+              <p>
+                La escultura que corona el recorrido, la plaza cubierta y el
+                café museo, el punto de encuentro de la ciudad.
+              </p>
+              <span class="card-link">Visitar el patio &rarr;</span>
+            </a>
+
+            <a class="page-card reveal" href="pages/cronologia.html">
+              <span class="card-num">04 &middot; Cronología</span>
+              <h3>De la pulpería a la Guerra Federal</h3>
+              <p>
+                Una línea de tiempo del general: de su nacimiento en Cúa a su
+                muerte en San Carlos, pasando por Santa Inés.
+              </p>
+              <span class="card-link">Leer los años &rarr;</span>
+            </a>
+
+            <a class="page-card reveal" href="pages/visita.html">
+              <span class="card-num">05 &middot; Visítanos</span>
+              <h3>Coordená tu recorrido</h3>
+              <p>
+                Datos para planificar la visita a la Casa-Pulpería en el centro
+                de Villa de Cura, estado Aragua.
+              </p>
+              <span class="card-link">Planificar la visita &rarr;</span>
+            </a>
+          </div>
+
+          <div class="page-foot">
+            <div class="page-foot-inner">
+              <span>Museo &middot; Café &middot; Patio</span>
+              <a class="page-foot-link" href="pages/visita.html"
+                >Solicitar información &rarr;</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <img
+            class="brand-logo small"
+            src="assets/logo%20fachada-03.png"
+            alt="Casa-Pulpería Ezequiel Zamora" />
+          <p>
+            Casa&#8209;Pulpería Ezequiel Zamora<br />Villa de Cura, estado
+            Aragua, Venezuela
+          </p>
+        </div>
+        <p class="footer-note">
+          Demo de landing construida a partir de información pública sobre la
+          inauguración del museo (mayo de 2026) y la biografía de Ezequiel
+          Zamora. Sitio no oficial, con fines de maquetado &mdash; cada sección
+          vive en su propia página dentro de <code>pages/</code>.
+        </p>
       </div>
-    </div>
-  </section>
+    </footer>
 
-</main>
-
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div>
-      <img class="brand-logo small" src="assets/logo%20fachada-03.png" alt="Casa-Pulpería Ezequiel Zamora">
-      <p>Casa&#8209;Pulpería Ezequiel Zamora<br>Villa de Cura, estado Aragua, Venezuela</p>
-    </div>
-    <p class="footer-note">Demo de landing construida a partir de información pública sobre la inauguración del museo (mayo de 2026) y la biografía de Ezequiel Zamora. Sitio no oficial, con fines de maquetado &mdash; cada sección vive en su propia página dentro de <code>pages/</code>.</p>
-  </div>
-</footer>
-
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
