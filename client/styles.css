@@ -136,14 +136,14 @@ a:focus-visible, button:focus-visible{
 .header-inner{
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0.85rem clamp(1.25rem, 4vw, 3rem);
+  padding: 1rem clamp(1.25rem, 4vw, 3rem);
   display: flex; align-items: center; justify-content: space-between;
   gap: 1rem;
 }
 
 .brand{ display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
-.brand-logo{ height: 72px; width: auto; display: block; }
-.brand-logo.small{ height: 64px; }
+.brand-logo{ height: 96px; width: auto; display: block; }
+.brand-logo.small{ height: 72px; }
 
 .main-nav{ display: flex; gap: 1.8rem; }
 .nav-link{
