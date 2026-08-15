@@ -230,6 +230,50 @@ a:focus-visible, button:focus-visible{
 }
 .about-details .ledger-card{ max-width: 320px; text-align: left; flex: 1; min-width: 260px; }
 
+/* ============================================================
+   Conocenos section
+   ============================================================ */
+.conocenos{ background: var(--paper-dark); border-top: 1px solid var(--paper-line); }
+
+.about-grid{
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  margin-top: 3rem;
+}
+.about-card{
+  background: var(--paper);
+  border: 1px solid var(--paper-line);
+  padding: 1.8rem 1.5rem;
+  box-shadow: 6px 6px 0 var(--stone);
+}
+.about-card h3{
+  font-size: 1.1rem; margin-bottom: 0.5em;
+}
+.about-card p{ font-size: 0.95rem; margin-bottom: 0; }
+
+.social-section{
+  margin-top: 3.5rem; text-align: center;
+  padding-top: 2rem; border-top: 1px dashed var(--paper-line);
+}
+.social-label{
+  font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em;
+  font-size: 0.78rem; color: var(--ink-soft); margin-bottom: 1rem;
+}
+.social-links{ display: flex; gap: 1.2rem; justify-content: center; }
+.social-link{
+  display: flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1.5px solid var(--paper-line); color: var(--ink-soft);
+  transition: all 0.2s ease;
+}
+.social-link:hover{
+  background: var(--mahogany-dark); color: var(--paper);
+  border-color: var(--mahogany-dark); transform: translateY(-2px);
+}
+
+@media (max-width: 760px){
+  .about-grid{ grid-template-columns: 1fr; }
+}
+
 .scroll-cue{
   position: absolute; bottom: 1.8rem; left: 50%; transform: translateX(-50%);
   width: 26px; height: 42px; border: 1.5px solid var(--mahogany-dark); border-radius: 14px;
