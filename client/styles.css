@@ -221,6 +221,15 @@ a:focus-visible, button:focus-visible{
 
 .hero-caption{ font-size: 0.85rem; color: var(--ink-soft); font-style: italic; }
 
+/* ============================================================
+   About details
+   ============================================================ */
+.about-details{
+  display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;
+  margin: 2rem 0 1.5rem;
+}
+.about-details .ledger-card{ max-width: 320px; text-align: left; flex: 1; min-width: 260px; }
+
 .scroll-cue{
   position: absolute; bottom: 1.8rem; left: 50%; transform: translateX(-50%);
   width: 26px; height: 42px; border: 1.5px solid var(--mahogany-dark); border-radius: 14px;
@@ -337,6 +346,22 @@ a:focus-visible, button:focus-visible{
   font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em;
   font-size: 0.72rem; color: var(--ledger-red); margin-right: 0.6em;
 }
+
+/* ============================================================
+   Sub-tabs (nested tabs inside book)
+   ============================================================ */
+.sub-tabs{ display: flex; gap: 0.5rem; margin: 1.5rem 0 0; }
+.sub-tab{
+  flex: 1; text-align: left; cursor: pointer;
+  background: var(--paper-dark); border: 1px solid var(--paper-line);
+  border-radius: 4px; padding: 0.8rem 1rem;
+  display: flex; flex-direction: column; gap: 0.1rem;
+  opacity: 0.6; transition: opacity 0.25s ease, background 0.25s ease;
+}
+.sub-tab.is-active{ opacity: 1; background: var(--paper); box-shadow: 0 -2px 0 var(--ledger-red) inset; }
+.sub-pages{ margin-top: 1rem; }
+.sub-page{ display: none; }
+.sub-page.is-active{ display: block; animation: pageIn 0.4s ease; }
 
 /* ============================================================
    Patio / statue

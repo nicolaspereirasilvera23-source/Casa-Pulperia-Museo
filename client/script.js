@@ -78,6 +78,26 @@
       });
 
       pages.forEach((page) => {
+        page.classList.toggle("is-active", page.id === `tab-${target}`);
+      });
+    });
+  });
+
+  /* ---------- Sub-tabs (nested inside book pages) ---------- */
+  const subTabs = document.querySelectorAll(".sub-tab");
+  const subPages = document.querySelectorAll(".sub-page");
+
+  subTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const target = tab.getAttribute("data-sala");
+
+      subTabs.forEach((t) => {
+        const active = t === tab;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-selected", String(active));
+      });
+
+      subPages.forEach((page) => {
         page.classList.toggle("is-active", page.id === `sala-${target}`);
       });
     });
@@ -106,4 +126,5 @@
       ctaContacto.style.pointerEvents = "none";
     });
   }
+
 })();
