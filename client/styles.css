@@ -373,6 +373,7 @@ html.js .reveal.is-visible{ opacity: 1; transform: none; }
   padding: 1.6rem 1.6rem 1.2rem;
   box-shadow: 6px 6px 0 var(--stone);
 }
+.col-text .ledger-card{ margin: 1.4rem 0 1rem; }
 .ledger-card-row{
   display: flex; justify-content: space-between; gap: 1rem;
   font-family: var(--font-meta); font-size: 0.86rem;
