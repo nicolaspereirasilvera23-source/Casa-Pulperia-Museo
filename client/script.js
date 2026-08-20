@@ -17,6 +17,12 @@
   const mainNav = document.getElementById("mainNav");
 
   if (navToggle && mainNav) {
+    const closeNav = () => {
+      mainNav.classList.remove("is-open");
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.setAttribute("aria-label", "Abrir menú");
+    };
+
     navToggle.addEventListener("click", () => {
       const isOpen = mainNav.classList.toggle("is-open");
       navToggle.setAttribute("aria-expanded", String(isOpen));
@@ -24,17 +30,26 @@
     });
 
     mainNav.querySelectorAll(".nav-link").forEach((link) => {
-      link.addEventListener("click", () => {
-        mainNav.classList.remove("is-open");
-        navToggle.setAttribute("aria-expanded", "false");
-        navToggle.setAttribute("aria-label", "Abrir menú");
-      });
+      link.addEventListener("click", closeNav);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && mainNav.classList.contains("is-open")) {
+        closeNav();
+        navToggle.focus();
+      }
+    });
+
+    document.addEventListener("pointerdown", (event) => {
+      if (!mainNav.classList.contains("is-open")) return;
+      if (header && header.contains(event.target)) return;
+      closeNav();
     });
   }
 
   /* ---------- Scrollspy: highlight active nav link ---------- */
   const sections = Array.from(document.querySelectorAll("main .section, .hero"));
-  const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+  const navLinks = Array.from(document.querySelectorAll(".main-nav .nav-link"));
 
   const spy = new IntersectionObserver(
     (entries) => {
