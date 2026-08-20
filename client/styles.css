@@ -226,6 +226,12 @@ a:focus-visible, button:focus-visible{
 }
 .hero-bg{ position: absolute; inset: 0; z-index: 0; }
 .hero-illustration{ width: 100%; height: 100%; object-fit: cover; }
+.hero-logo{
+  height: clamp(180px, 32vw, 280px);
+  width: auto;
+  margin: 0 auto 1.4rem;
+  object-fit: contain;
+}
 
 .hero-content{ position: relative; z-index: 2; max-width: 760px; }
 
@@ -399,6 +405,11 @@ html.js .reveal.is-visible{ opacity: 1; transform: none; }
   transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
 }
 .book-tab.is-active{ opacity: 1; transform: translateY(0); background: var(--paper); box-shadow: 0 -2px 0 var(--sello) inset; }
+.book-tab:focus-visible, .sub-tab:focus-visible{
+  outline: 2px solid var(--sello);
+  outline-offset: 2px;
+  z-index: 3;
+}
 .tab-num{ font-family: var(--font-meta); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sello); }
 .tab-name{ font-family: var(--font-display); font-size: 1.05rem; color: var(--carmesi-oscuro); text-transform: uppercase; }
 .tab-years{ font-family: var(--font-meta); font-size: 0.76rem; color: var(--ink-soft); }
@@ -508,11 +519,17 @@ html.js .reveal.is-visible{ opacity: 1; transform: none; }
 .timeline-item[data-open="true"] .timeline-plus{ transform: rotate(45deg); color: var(--sello); }
 
 .timeline-detail{
-  max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease;
-  padding: 0 0 0;
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows 0.35s ease;
 }
-.timeline-detail p{ padding-bottom: 1.1rem; margin: 0; max-width: 58ch; }
-.timeline-item[data-open="true"] .timeline-detail{ max-height: 220px; }
+.timeline-detail p{
+  overflow: hidden; min-height: 0;
+  padding-bottom: 0; margin: 0; max-width: 58ch;
+}
+.timeline-item[data-open="true"] .timeline-detail{ grid-template-rows: 1fr; }
+.timeline-item[data-open="true"] .timeline-detail p{ padding-bottom: 1.1rem; }
 
 /* ============================================================
    Visita — receipt
@@ -639,17 +656,19 @@ html.js .reveal.is-visible{ opacity: 1; transform: none; }
    ============================================================ */
 .overview{ background: var(--paper); border-top: 1px solid var(--paper-line); }
 .page-cards{
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem;
+  display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.4rem;
   margin-top: 3rem;
 }
 .page-card{
+  grid-column: span 2;
   display: flex; flex-direction: column; gap: 0.5rem;
   text-decoration: none; background: var(--paper);
   border: 1px solid var(--paper-line); padding: 1.6rem 1.6rem 1.3rem;
   box-shadow: 6px 6px 0 var(--stone);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.page-card:hover{ transform: translateY(-4px); box-shadow: 10px 10px 0 var(--stone); }
+.page-card:nth-child(n+4){ grid-column: span 3; }
+.page-card:hover{ transform: translateY(-2px); box-shadow: 8px 8px 0 var(--stone); }
 .page-card .card-num{
   font-family: var(--font-meta); font-size: 0.72rem; text-transform: uppercase;
   letter-spacing: 0.1em; color: var(--sello);
@@ -664,4 +683,5 @@ html.js .reveal.is-visible{ opacity: 1; transform: none; }
 
 @media (max-width: 760px){
   .page-cards{ grid-template-columns: 1fr; }
+  .page-card, .page-card:nth-child(n+4){ grid-column: auto; }
 }

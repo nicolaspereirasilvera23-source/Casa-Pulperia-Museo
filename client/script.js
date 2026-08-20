@@ -98,11 +98,38 @@
     if (updateHash && activePage && activePage.id && history.replaceState) {
       history.replaceState(null, "", `#${activePage.id}`);
     }
+    syncTabindex(tabs);
+  };
+
+  const syncTabindex = (tabNodes) => {
+    tabNodes.forEach((t) => {
+      t.setAttribute("tabindex", t.classList.contains("is-active") ? "0" : "-1");
+    });
+  };
+
+  const bindTablistKeys = (tabNodes, onActivate) => {
+    if (!tabNodes.length) return;
+    syncTabindex(tabNodes);
+    tabNodes.forEach((tab, index) => {
+      tab.addEventListener("keydown", (event) => {
+        const last = tabNodes.length - 1;
+        let next = -1;
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") next = index === last ? 0 : index + 1;
+        if (event.key === "ArrowLeft" || event.key === "ArrowUp") next = index === 0 ? last : index - 1;
+        if (event.key === "Home") next = 0;
+        if (event.key === "End") next = last;
+        if (next < 0) return;
+        event.preventDefault();
+        onActivate(tabNodes[next]);
+        tabNodes[next].focus();
+      });
+    });
   };
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => activateBookTab(tab, { updateHash: true }));
   });
+  bindTablistKeys(Array.from(tabs), (tab) => activateBookTab(tab, { updateHash: true }));
 
   const applyBookHash = () => {
     const id = (location.hash || "").replace(/^#/, "");
@@ -120,24 +147,27 @@
   window.addEventListener("hashchange", applyBookHash);
 
   /* ---------- Sub-tabs (nested inside book pages) ---------- */
-  const subTabs = document.querySelectorAll(".sub-tab");
+  const subTabs = Array.from(document.querySelectorAll(".sub-tab"));
   const subPages = document.querySelectorAll(".sub-page");
 
-  subTabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const target = tab.getAttribute("data-sala");
-
-      subTabs.forEach((t) => {
-        const active = t === tab;
-        t.classList.toggle("is-active", active);
-        t.setAttribute("aria-selected", String(active));
-      });
-
-      subPages.forEach((page) => {
-        page.classList.toggle("is-active", page.id === `sala-${target}`);
-      });
+  const activateSubTab = (tab) => {
+    if (!tab) return;
+    const target = tab.getAttribute("data-sala");
+    subTabs.forEach((t) => {
+      const active = t === tab;
+      t.classList.toggle("is-active", active);
+      t.setAttribute("aria-selected", String(active));
     });
+    subPages.forEach((page) => {
+      page.classList.toggle("is-active", page.id === `sala-${target}`);
+    });
+    syncTabindex(subTabs);
+  };
+
+  subTabs.forEach((tab) => {
+    tab.addEventListener("click", () => activateSubTab(tab));
   });
+  bindTablistKeys(subTabs, activateSubTab);
 
   /* ---------- Timeline accordion ---------- */
   const timelineItems = document.querySelectorAll(".timeline-item");
