@@ -185,7 +185,8 @@ a:focus-visible, button:focus-visible{
 
 .brand{ display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
 .brand-logo{ height: 52px; width: auto; display: block; object-fit: contain; }
-.brand-logo.small{ height: 56px; }
+.brand-logo.small{ height: 96px; }
+.site-footer .brand-logo.small{ mix-blend-mode: lighten; }
 
 .main-nav{ display: flex; gap: 1.8rem; }
 .nav-link{
