@@ -1,9 +1,12 @@
 (function () {
   "use strict";
 
+  document.documentElement.classList.add("js");
+
   /* ---------- Header shadow on scroll ---------- */
   const header = document.getElementById("siteHeader");
   const onScroll = () => {
+    if (!header) return;
     header.classList.toggle("is-scrolled", window.scrollY > 8);
   };
   document.addEventListener("scroll", onScroll, { passive: true });
@@ -13,18 +16,21 @@
   const navToggle = document.getElementById("navToggle");
   const mainNav = document.getElementById("mainNav");
 
-  navToggle.addEventListener("click", () => {
-    const isOpen = mainNav.classList.toggle("is-open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
-    navToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
-  });
-
-  mainNav.querySelectorAll(".nav-link").forEach((link) => {
-    link.addEventListener("click", () => {
-      mainNav.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
+  if (navToggle && mainNav) {
+    navToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("is-open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+      navToggle.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
     });
-  });
+
+    mainNav.querySelectorAll(".nav-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.setAttribute("aria-label", "Abrir menú");
+      });
+    });
+  }
 
   /* ---------- Scrollspy: highlight active nav link ---------- */
   const sections = Array.from(document.querySelectorAll("main .section, .hero"));
@@ -35,8 +41,10 @@
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         const id = entry.target.getAttribute("id");
+        const href = `#${id}`;
+        if (!navLinks.some((link) => link.getAttribute("href") === href)) return;
         navLinks.forEach((link) => {
-          link.classList.toggle("is-active", link.getAttribute("href") === `#${id}`);
+          link.classList.toggle("is-active", link.getAttribute("href") === href);
         });
       });
     },
@@ -67,21 +75,49 @@
   const tabs = document.querySelectorAll(".book-tab");
   const pages = document.querySelectorAll(".book-page");
 
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const target = tab.getAttribute("data-sala");
+  const pageMatches = (page, target) =>
+    page.id === `tab-${target}` || page.id === `sala-${target}` || page.id === target;
 
-      tabs.forEach((t) => {
-        const active = t === tab;
-        t.classList.toggle("is-active", active);
-        t.setAttribute("aria-selected", String(active));
-      });
+  const activateBookTab = (tab, { updateHash } = { updateHash: false }) => {
+    if (!tab) return;
+    const target = tab.getAttribute("data-sala");
 
-      pages.forEach((page) => {
-        page.classList.toggle("is-active", page.id === `tab-${target}`);
-      });
+    tabs.forEach((t) => {
+      const active = t === tab;
+      t.classList.toggle("is-active", active);
+      t.setAttribute("aria-selected", String(active));
     });
+
+    let activePage = null;
+    pages.forEach((page) => {
+      const on = pageMatches(page, target);
+      page.classList.toggle("is-active", on);
+      if (on) activePage = page;
+    });
+
+    if (updateHash && activePage && activePage.id && history.replaceState) {
+      history.replaceState(null, "", `#${activePage.id}`);
+    }
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => activateBookTab(tab, { updateHash: true }));
   });
+
+  const applyBookHash = () => {
+    const id = (location.hash || "").replace(/^#/, "");
+    if (!id) return;
+    const page = document.getElementById(id);
+    if (!page || !page.classList.contains("book-page")) return;
+    const target = page.id.replace(/^tab-/, "").replace(/^sala-/, "");
+    const tab =
+      document.querySelector(`.book-tab[data-sala="${target}"]`) ||
+      document.querySelector(`.book-tab[aria-controls="${page.id}"]`);
+    activateBookTab(tab);
+  };
+
+  applyBookHash();
+  window.addEventListener("hashchange", applyBookHash);
 
   /* ---------- Sub-tabs (nested inside book pages) ---------- */
   const subTabs = document.querySelectorAll(".sub-tab");
@@ -107,12 +143,12 @@
   const timelineItems = document.querySelectorAll(".timeline-item");
   timelineItems.forEach((item) => {
     const toggle = item.querySelector(".timeline-toggle");
+    if (!toggle) return;
     toggle.addEventListener("click", () => {
       const isOpen = item.getAttribute("data-open") === "true";
       item.setAttribute("data-open", String(!isOpen));
     });
   });
-  // Open the first timeline entry by default
   if (timelineItems.length) {
     timelineItems[0].setAttribute("data-open", "true");
   }
