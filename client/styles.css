@@ -419,7 +419,6 @@ html.js .reveal.is-visible{ opacity: 1; transform: none; }
   position: relative;
   border: 1px solid var(--paper-line);
   background: var(--paper);
-  min-height: 360px;
   box-shadow: 8px 10px 0 var(--stone);
 }
 .book-page{
@@ -487,6 +486,32 @@ html.js .reveal.is-visible{ opacity: 1; transform: none; }
   color: var(--paper); background: var(--sello);
   padding: 0.5em 0.9em; border-radius: 999px 999px 999px 4px;
 }
+
+.exhibit-frame{
+  margin: 0 0 1.4rem;
+  background: var(--paper-dark);
+  border: 1px solid var(--paper-line);
+}
+.exhibit-frame img{
+  width: 100%; max-height: 280px; object-fit: contain;
+  object-position: center top; margin: 0 auto;
+}
+.exhibit-frame figcaption{
+  font-family: var(--font-meta); font-size: 0.72rem;
+  color: var(--ink-soft); padding: 0.7rem 0.9rem 0.9rem;
+  margin: 0; border-top: 1px dashed var(--paper-line);
+}
+
+.visit-map-block{ margin-top: clamp(2.5rem, 5vw, 4rem); }
+.visit-map-block h2{ margin-bottom: 0.4em; }
+.visit-map{
+  margin-top: 1.2rem;
+  border: 1px solid var(--paper-line);
+  box-shadow: 6px 6px 0 var(--stone);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+.visit-map iframe{ width: 100%; height: 100%; border: 0; display: block; }
 
 /* ============================================================
    Timeline
