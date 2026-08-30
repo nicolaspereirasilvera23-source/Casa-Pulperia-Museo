@@ -1,1 +1,22 @@
 .ai/
+Manual_Logo.pdf
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+tmp/
+vendor/
+
+# Entorno
+.env
+api/.env
+
+# Node
+node_modules/
+dist/
+.DS_Store
+

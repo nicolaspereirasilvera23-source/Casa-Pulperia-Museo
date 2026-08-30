@@ -1,0 +1,49 @@
+import { useMemo } from 'react'
+import { ImageOff } from 'lucide-react'
+import { listArticles } from '../lib/articles.js'
+
+export default function Media() {
+  const covers = useMemo(
+    () => listArticles().filter((item) => item.cover),
+    [],
+  )
+
+  return (
+    <div className="mx-auto max-w-6xl space-y-6">
+      <div>
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-carmesi">
+          Archivo visual
+        </p>
+        <h1 className="mt-1 font-display text-3xl font-bold uppercase tracking-tight text-carmesi-oscuro">
+          Medios
+        </h1>
+        <p className="mt-2 max-w-xl text-sm text-ink-soft">
+          Portadas asociadas a los artículos. Suba imágenes al crear o editar
+          una pieza.
+        </p>
+      </div>
+
+      {covers.length === 0 ? (
+        <div className="flex flex-col items-center border border-dashed border-paper-line bg-paper px-6 py-16 text-center">
+          <ImageOff className="mb-3 text-ink-soft" size={28} />
+          <p className="text-sm text-ink-soft">
+            Todavía no hay imágenes en el archivo.
+          </p>
+        </div>
+      ) : (
+        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {covers.map((item) => (
+            <li key={item.id} className="border border-paper-line bg-paper">
+              <img
+                src={item.cover}
+                alt=""
+                className="h-44 w-full object-cover"
+              />
+              <p className="truncate px-3 py-3 text-sm font-medium">{item.title}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
+}
