@@ -1,12 +1,28 @@
-import { useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import { ImageOff } from 'lucide-react'
 import { listArticles } from '../lib/articles.js'
 
 export default function Media() {
-  const covers = useMemo(
-    () => listArticles().filter((item) => item.cover),
-    [],
-  )
+  const [covers, setCovers] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    let active = true
+    listArticles()
+      .then((items) => {
+        if (active) setCovers(items.filter((item) => item.cover))
+      })
+      .catch((err) => {
+        if (active) setError(err.message)
+      })
+      .finally(() => {
+        if (active) setLoading(false)
+      })
+    return () => {
+      active = false
+    }
+  }, [])
 
   return (
     <div className="mx-auto max-w-6xl space-y-6">
@@ -23,7 +39,15 @@ export default function Media() {
         </p>
       </div>
 
-      {covers.length === 0 ? (
+      {error ? (
+        <p className="border border-sello/30 bg-sello/5 px-3 py-2 text-sm text-sello">
+          {error}
+        </p>
+      ) : null}
+
+      {loading ? (
+        <p className="text-sm text-ink-soft">Cargando…</p>
+      ) : covers.length === 0 ? (
         <div className="flex flex-col items-center border border-dashed border-paper-line bg-paper px-6 py-16 text-center">
           <ImageOff className="mb-3 text-ink-soft" size={28} />
           <p className="text-sm text-ink-soft">

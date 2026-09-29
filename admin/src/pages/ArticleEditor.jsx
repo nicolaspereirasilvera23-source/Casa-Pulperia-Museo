@@ -19,18 +19,37 @@ export default function ArticleEditor() {
   const isNew = !id
   const [form, setForm] = useState(empty)
   const [missing, setMissing] = useState(false)
+  const [loading, setLoading] = useState(Boolean(id))
+  const [saving, setSaving] = useState(false)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     if (!id) {
       setForm(empty)
+      setLoading(false)
       return
     }
-    const found = getArticle(id)
-    if (!found) {
-      setMissing(true)
-      return
+
+    let active = true
+    getArticle(id)
+      .then((found) => {
+        if (active) setForm(found)
+      })
+      .catch((err) => {
+        if (!active) return
+        if (err.status === 404) {
+          setMissing(true)
+          return
+        }
+        setError(err.message)
+      })
+      .finally(() => {
+        if (active) setLoading(false)
+      })
+
+    return () => {
+      active = false
     }
-    setForm(found)
   }, [id])
 
   function update(field, value) {
@@ -45,10 +64,21 @@ export default function ArticleEditor() {
     reader.readAsDataURL(file)
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
-    saveArticle(form)
-    navigate('/articulos')
+    setSaving(true)
+    setError('')
+    try {
+      await saveArticle(form)
+      navigate('/articulos')
+    } catch (err) {
+      setError(err.message)
+      setSaving(false)
+    }
+  }
+
+  if (loading) {
+    return <p className="text-sm text-ink-soft">Cargando…</p>
   }
 
   if (missing) {
@@ -153,12 +183,19 @@ export default function ArticleEditor() {
           ) : null}
         </div>
 
+        {error ? (
+          <p className="border border-sello/30 bg-sello/5 px-3 py-2 text-sm text-sello">
+            {error}
+          </p>
+        ) : null}
+
         <div className="flex flex-wrap gap-3 pt-2">
           <button
             type="submit"
-            className="bg-carmesi px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-white hover:bg-carmesi-oscuro"
+            disabled={saving}
+            className="bg-carmesi px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-white hover:bg-carmesi-oscuro disabled:opacity-60"
           >
-            Guardar
+            {saving ? 'Guardando…' : 'Guardar'}
           </button>
           <Link
             to="/articulos"

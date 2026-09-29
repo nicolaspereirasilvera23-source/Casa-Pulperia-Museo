@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Pencil, Plus, Search, Trash2 } from 'lucide-react'
 import { deleteArticle, listArticles } from '../lib/articles.js'
@@ -13,7 +13,26 @@ function formatDate(iso) {
 
 export default function Articles() {
   const [query, setQuery] = useState('')
-  const [items, setItems] = useState(listArticles)
+  const [items, setItems] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    let active = true
+    listArticles()
+      .then((next) => {
+        if (active) setItems(next)
+      })
+      .catch((err) => {
+        if (active) setError(err.message)
+      })
+      .finally(() => {
+        if (active) setLoading(false)
+      })
+    return () => {
+      active = false
+    }
+  }, [])
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -25,10 +44,15 @@ export default function Articles() {
     )
   }, [items, query])
 
-  function handleDelete(id, title) {
+  async function handleDelete(id, title) {
     if (!window.confirm(`¿Eliminar «${title}»?`)) return
-    deleteArticle(id)
-    setItems(listArticles())
+    try {
+      await deleteArticle(id)
+      setItems(await listArticles())
+      setError('')
+    } catch (err) {
+      setError(err.message)
+    }
   }
 
   return (
@@ -50,6 +74,12 @@ export default function Articles() {
           Nuevo
         </Link>
       </div>
+
+      {error ? (
+        <p className="border border-sello/30 bg-sello/5 px-3 py-2 text-sm text-sello">
+          {error}
+        </p>
+      ) : null}
 
       <div className="relative max-w-sm">
         <Search
@@ -79,7 +109,13 @@ export default function Articles() {
             </tr>
           </thead>
           <tbody className="divide-y divide-paper-line">
-            {filtered.length === 0 ? (
+            {loading ? (
+              <tr>
+                <td colSpan={5} className="px-4 py-10 text-center text-ink-soft">
+                  Cargando…
+                </td>
+              </tr>
+            ) : filtered.length === 0 ? (
               <tr>
                 <td colSpan={5} className="px-4 py-10 text-center text-ink-soft">
                   No hay artículos que coincidan.

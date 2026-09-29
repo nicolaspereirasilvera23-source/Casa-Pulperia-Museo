@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FilePenLine, FileText, FolderPlus, Send } from 'lucide-react'
-import { articleStats } from '../lib/articles.js'
+import { listArticles, summarizeArticles } from '../lib/articles.js'
 
 function formatDate(iso) {
   return new Intl.DateTimeFormat('es-VE', {
@@ -11,30 +12,45 @@ function formatDate(iso) {
 }
 
 export default function Dashboard() {
-  const stats = articleStats()
+  const [stats, setStats] = useState(null)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    let active = true
+    listArticles()
+      .then((items) => {
+        if (active) setStats(summarizeArticles(items))
+      })
+      .catch((err) => {
+        if (active) setError(err.message)
+      })
+    return () => {
+      active = false
+    }
+  }, [])
 
   const cards = [
     {
       label: 'Artículos',
-      value: stats.total,
+      value: stats?.total,
       hint: 'en el archivo',
       icon: FileText,
     },
     {
       label: 'Publicados',
-      value: stats.published,
+      value: stats?.published,
       hint: 'visibles en el sitio',
       icon: Send,
     },
     {
       label: 'Borradores',
-      value: stats.drafts,
+      value: stats?.drafts,
       hint: 'pendientes de revisión',
       icon: FilePenLine,
     },
     {
       label: 'Este mes',
-      value: stats.thisMonth,
+      value: stats?.thisMonth,
       hint: 'nuevos registros',
       icon: FolderPlus,
     },
@@ -50,10 +66,9 @@ export default function Dashboard() {
           <h1 className="mt-1 font-display text-3xl font-bold uppercase tracking-tight text-carmesi-oscuro">
             Métricas rápidas
           </h1>
-          <p className="mt-2 max-w-xl text-sm text-ink-soft">
-            Estado del archivo editorial de la Casa-Pulpería. Los datos se
-            guardan en este navegador hasta conectar el API.
-          </p>
+            <p className="mt-2 max-w-xl text-sm text-ink-soft">
+              Estado del archivo editorial de la Casa-Pulpería.
+            </p>
         </div>
         <Link
           to="/articulos/nuevo"
@@ -62,6 +77,12 @@ export default function Dashboard() {
           Subir artículo
         </Link>
       </div>
+
+      {error ? (
+        <p className="border border-sello/30 bg-sello/5 px-3 py-2 text-sm text-sello">
+          {error}
+        </p>
+      ) : null}
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {cards.map(({ label, value, hint, icon: Icon }) => (
@@ -77,7 +98,9 @@ export default function Dashboard() {
                 <Icon size={16} />
               </span>
             </div>
-            <p className="font-display text-4xl font-bold text-ink">{value}</p>
+            <p className="font-display text-4xl font-bold text-ink">
+              {stats ? value : '—'}
+            </p>
             <p className="mt-1 text-sm text-ink-soft">{hint}</p>
           </article>
         ))}
@@ -95,7 +118,9 @@ export default function Dashboard() {
             Ver todos
           </Link>
         </div>
-        {stats.recent.length === 0 ? (
+        {error ? null : !stats ? (
+          <p className="px-5 py-8 text-sm text-ink-soft">Cargando…</p>
+        ) : stats.recent.length === 0 ? (
           <p className="px-5 py-8 text-sm text-ink-soft">
             Aún no hay artículos. Suba el primero para comenzar el archivo.
           </p>
