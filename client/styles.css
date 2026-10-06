@@ -272,17 +272,6 @@ a:focus-visible, button:focus-visible{
 .btn-ghost{ background: transparent; color: var(--carmesi-oscuro); }
 .btn-ghost:hover{ transform: translateY(-2px); background: var(--carmesi-oscuro); color: var(--paper); }
 
-.hero-caption{ font-size: 0.85rem; color: var(--ink-soft); font-style: italic; }
-
-/* ============================================================
-   About details
-   ============================================================ */
-.about-details{
-  display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;
-  margin: 2rem 0 1.5rem;
-}
-.about-details .ledger-card{ max-width: 320px; text-align: left; flex: 1; min-width: 260px; }
-
 /* ============================================================
    Conocenos section
    ============================================================ */
@@ -351,16 +340,7 @@ a:focus-visible, button:focus-visible{
 .section.patio{ background: var(--paper); }
 .section.cronologia{ background: var(--paper-dark); }
 .section.visita{ background: var(--paper); }
-
-.two-col{
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: center;
-}
-.two-col.reverse{ grid-template-columns: 0.9fr 1.1fr; }
-.two-col.reverse .col-figure{ order: 1; }
-.two-col.reverse .col-text{ order: 2; }
+.visita .col-text{ max-width: 760px; }
 
 .reveal{ opacity: 1; transform: none; }
 html.js .reveal{ opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -558,34 +538,12 @@ html.js .reveal.is-visible{ opacity: 1; transform: none; }
 .timeline-item[data-open="true"] .timeline-detail p{ padding-bottom: 1.1rem; }
 
 /* ============================================================
-   Visita — receipt
+   Visita
    ============================================================ */
 .note{
   font-size: 0.88rem; font-style: italic; color: var(--ink-soft);
   border-left: 2px solid var(--paper-line); padding-left: 1rem;
 }
-
-.receipt{
-  background: var(--paper);
-  border: 1px dashed var(--ink-soft);
-  padding: 1.8rem 1.6rem;
-  max-width: 380px; margin: 0 auto;
-  font-family: var(--font-meta);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-}
-.receipt-title{
-  text-align: center; text-transform: uppercase; letter-spacing: 0.14em;
-  font-size: 0.8rem; color: var(--sello); margin-bottom: 1.2rem;
-}
-.receipt-line{
-  display: flex; justify-content: space-between; gap: 0.8rem;
-  font-size: 0.82rem; color: var(--ink-soft); padding: 0.45em 0;
-}
-.receipt-line span:last-child{ text-align: right; color: var(--ink); }
-.receipt-divider{
-  border-top: 1px dashed var(--ink-soft); margin: 1rem 0;
-}
-.receipt-footer{ font-size: 0.72rem; text-align: center; color: var(--ink-soft); margin: 0; }
 
 /* ============================================================
    Footer
@@ -609,13 +567,6 @@ html.js .reveal.is-visible{ opacity: 1; transform: none; }
 /* ============================================================
    Responsive
    ============================================================ */
-@media (max-width: 900px){
-  .two-col, .two-col.reverse{ grid-template-columns: 1fr; }
-  .two-col.reverse .col-figure{ order: 0; }
-  .two-col.reverse .col-text{ order: 1; }
-  .col-figure{ max-width: 420px; margin: 0 auto; }
-}
-
 @media (max-width: 760px){
   :root{ --header-h: 3.6rem; }
   .brand-logo{ height: 44px; }
@@ -663,6 +614,23 @@ html.js .reveal.is-visible{ opacity: 1; transform: none; }
 .page-hero-lead{
   font-size: 1.1rem; max-width: 52ch; margin-left: auto; margin-right: auto;
   color: var(--ink-soft);
+}
+.page-hero-watermark{
+  position: absolute; top: 50%; transform: translateY(-50%);
+  height: clamp(240px, 32vw, 360px); width: auto;
+  opacity: 0.1; z-index: 1;
+  pointer-events: none; user-select: none;
+}
+.page-hero-watermark.is-left{ left: clamp(-60px, 3vw, 5%); }
+.page-hero-watermark.is-right{ right: clamp(-40px, 3vw, 5%); }
+
+@media (max-width: 900px){
+  .page-hero-watermark{ height: clamp(180px, 40vw, 260px); opacity: 0.07; }
+}
+@media (max-width: 640px){
+  .page-hero-watermark{ height: 170px; opacity: 0.05; }
+  .page-hero-watermark.is-left{ left: -54px; }
+  .page-hero-watermark.is-right{ right: -40px; }
 }
 
 /* breadcrumb back to landing */
