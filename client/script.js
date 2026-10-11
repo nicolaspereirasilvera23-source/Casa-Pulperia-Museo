@@ -198,13 +198,30 @@
     timelineItems[0].setAttribute("data-open", "true");
   }
 
-  /* ---------- Demo CTA: contact button ---------- */
+  /* ---------- CTA contacto: envía correo vía /api/contact ---------- */
   const ctaContacto = document.getElementById("ctaContacto");
   if (ctaContacto) {
-    ctaContacto.addEventListener("click", (e) => {
-      e.preventDefault();
-      ctaContacto.textContent = "¡Gracias! (demo sin backend)";
+    const originalLabel = ctaContacto.textContent;
+    ctaContacto.addEventListener("click", async (event) => {
+      event.preventDefault();
+      ctaContacto.textContent = "Enviando...";
       ctaContacto.style.pointerEvents = "none";
+      try {
+        const response = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            message: "Solicitud de información desde la página Visítanos.",
+          }),
+        });
+        if (!response.ok) throw new Error(String(response.status));
+        ctaContacto.textContent = "¡Solicitud enviada!";
+      } catch {
+        ctaContacto.style.pointerEvents = "";
+        ctaContacto.textContent = originalLabel;
+        window.location.href =
+          "mailto:casamuseopulperiaezequielzamor@gmail.com?subject=Solicitar%20informaci%C3%B3n";
+      }
     });
   }
 
