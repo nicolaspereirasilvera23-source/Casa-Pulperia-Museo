@@ -26,6 +26,7 @@ func New(cfg config.Config, db *mongo.Database) (*Server, error) {
 	mux := http.NewServeMux()
 	articles := repository.NewArticleRepository(db)
 	handlers.NewArticleHandler(articles).Register(mux)
+	handlers.NewContactHandler(cfg.ResendAPIKey, cfg.ResendFrom, cfg.ContactEmail).Register(mux)
 	mux.Handle("/", http.FileServer(http.Dir(clientDir)))
 
 	return &Server{
