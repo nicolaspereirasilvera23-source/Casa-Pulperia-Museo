@@ -46,6 +46,15 @@ func (h *ArticleHandler) list(w http.ResponseWriter, r *http.Request, publishedO
 		writeError(w, http.StatusInternalServerError, "No se pudieron cargar los artículos.")
 		return
 	}
+	if publishedOnly {
+		// Public archive cards need only metadata. Load the full text and image
+		// data URLs from GET /api/articles/{id} when a visitor opens an article.
+		for i := range articles {
+			articles[i].Content = ""
+			articles[i].Cover = ""
+			articles[i].Image2 = ""
+		}
+	}
 	writeJSON(w, http.StatusOK, articles)
 }
 
@@ -151,6 +160,8 @@ func readArticleInput(w http.ResponseWriter, r *http.Request) (models.ArticleInp
 	input.Content = strings.TrimSpace(input.Content)
 	input.Category = strings.TrimSpace(input.Category)
 	input.Status = strings.TrimSpace(input.Status)
+	input.Cover = strings.TrimSpace(input.Cover)
+	input.Image2 = strings.TrimSpace(input.Image2)
 
 	switch {
 	case input.Title == "":

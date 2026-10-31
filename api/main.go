@@ -13,10 +13,11 @@ import (
 func main() {
 	cfg := config.Load()
 
-	_, db, err := database.Connect(cfg)
+	db, err := database.Connect(cfg.SQLitePath)
 	if err != nil {
-		log.Fatalf("mongodb: %v", err)
+		log.Fatalf("sqlite: %v", err)
 	}
+	defer db.Close()
 
 	articles := repository.NewArticleRepository(db)
 	if err := articles.SeedIfEmpty(context.Background()); err != nil {

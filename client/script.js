@@ -225,4 +225,121 @@
     });
   }
 
+  /* ---------- Published articles archive ---------- */
+  const articleArchive = document.getElementById("articleArchive");
+  const articleSearch = document.getElementById("articleSearch");
+  const articleStatus = document.getElementById("articleArchiveStatus");
+
+  if (articleArchive && articleSearch && articleStatus) {
+    let publishedArticles = [];
+
+    const createArticleCard = (article) => {
+      const card = document.createElement("article");
+      card.className = "archive-article";
+
+      const meta = document.createElement("p");
+      meta.className = "archive-article-meta";
+      meta.textContent = article.category || "Museo";
+
+      const title = document.createElement("h3");
+      title.textContent = article.title;
+
+      const excerpt = document.createElement("p");
+      excerpt.className = "archive-article-excerpt";
+      excerpt.textContent = article.excerpt || "Una historia del archivo de la Casa-Pulpería.";
+
+      const detail = document.createElement("div");
+      detail.className = "archive-article-detail";
+      detail.id = `article-detail-${article.id}`;
+      detail.hidden = true;
+
+      const toggle = document.createElement("button");
+      toggle.type = "button";
+      toggle.className = "archive-article-toggle";
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-controls", detail.id);
+      toggle.textContent = "Leer artículo";
+
+      let loaded = false;
+      toggle.addEventListener("click", async () => {
+        if (loaded) {
+          const expanded = toggle.getAttribute("aria-expanded") === "true";
+          toggle.setAttribute("aria-expanded", String(!expanded));
+          toggle.textContent = expanded ? "Leer artículo" : "Cerrar artículo";
+          detail.hidden = expanded;
+          return;
+        }
+
+        toggle.disabled = true;
+        toggle.textContent = "Cargando…";
+        try {
+          const response = await fetch(`/api/articles/${encodeURIComponent(article.id)}`);
+          if (!response.ok) throw new Error("No se pudo cargar este artículo.");
+          const fullArticle = await response.json();
+          renderArticleDetail(detail, fullArticle);
+          loaded = true;
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.textContent = "Cerrar artículo";
+          detail.hidden = false;
+        } catch {
+          toggle.textContent = "No se pudo cargar · reintentar";
+        } finally {
+          toggle.disabled = false;
+        }
+      });
+
+      card.append(meta, title, excerpt, toggle, detail);
+      return card;
+    };
+
+    const renderArticleList = () => {
+      const query = articleSearch.value.trim().toLocaleLowerCase("es");
+      const matches = publishedArticles.filter((article) =>
+        [article.title, article.excerpt, article.category]
+          .join(" ")
+          .toLocaleLowerCase("es")
+          .includes(query),
+      );
+      articleArchive.replaceChildren(...matches.map(createArticleCard));
+      articleStatus.textContent = matches.length
+        ? `${matches.length} ${matches.length === 1 ? "artículo publicado" : "artículos publicados"}`
+        : "No hay artículos publicados que coincidan con la búsqueda.";
+    };
+
+    articleSearch.addEventListener("input", renderArticleList);
+    fetch("/api/articles")
+      .then((response) => {
+        if (!response.ok) throw new Error("No se pudo consultar el archivo.");
+        return response.json();
+      })
+      .then((articles) => {
+        publishedArticles = Array.isArray(articles) ? articles : [];
+        renderArticleList();
+      })
+      .catch(() => {
+        articleStatus.textContent = "El archivo de artículos no está disponible en este momento.";
+      });
+  }
+
+  function renderArticleDetail(container, article) {
+    container.replaceChildren();
+    const images = [article.cover, article.image2].filter(Boolean);
+    if (images.length) {
+      const gallery = document.createElement("div");
+      gallery.className = "archive-article-images";
+      images.forEach((source, index) => {
+        const image = document.createElement("img");
+        image.src = source;
+        image.alt = `Imagen ${index + 1} del artículo ${article.title}`;
+        image.loading = "lazy";
+        image.decoding = "async";
+        gallery.append(image);
+      });
+      container.append(gallery);
+    }
+    const copy = document.createElement("div");
+    copy.className = "archive-article-copy";
+    copy.textContent = article.content || "Este artículo todavía no tiene texto.";
+    container.append(copy);
+  }
 })();

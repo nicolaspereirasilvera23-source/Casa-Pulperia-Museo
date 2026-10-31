@@ -41,6 +41,7 @@
           <a href="#inicio" class="nav-link">Inicio</a>
           <a href="pages/recorrido.html" class="nav-link">Recorrido</a>
           <a href="pages/cronologia.html" class="nav-link">Cronología</a>
+          <a href="#articulos" class="nav-link">Artículos</a>
           <a href="pages/visita.html" class="nav-link">Visítanos</a>
         </nav>
 
@@ -253,6 +254,26 @@
           </div>
         </div>
       </section>
+
+      <!-- ARCHIVO DE ARTÍCULOS PUBLICADOS -->
+      <section class="section article-archive" id="articulos" aria-labelledby="articlesTitle">
+        <div class="section-inner">
+          <p class="kicker center">Archivo vivo</p>
+          <h2 class="center" id="articlesTitle">Historias de la Casa-Pulpería</h2>
+          <p class="section-lead center">
+            Textos del museo para conocer las piezas, las salas y la memoria de Villa de Cura.
+          </p>
+
+          <label class="article-search" for="articleSearch">
+            <span>Buscar por título, tema o sala</span>
+            <input id="articleSearch" type="search" placeholder="Ej.: Zamora, Casa, cronología" autocomplete="off" />
+          </label>
+          <p class="article-archive-status" id="articleArchiveStatus" role="status" aria-live="polite">
+            Cargando artículos publicados…
+          </p>
+          <div class="article-grid" id="articleArchive"></div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -271,6 +292,7 @@
           <a href="#inicio">Inicio</a>
           <a href="pages/recorrido.html">Recorrido</a>
           <a href="pages/cronologia.html">Cronología</a>
+          <a href="#articulos">Artículos</a>
           <a href="pages/visita.html">Visítanos</a>
         </nav>
         <p class="footer-note">

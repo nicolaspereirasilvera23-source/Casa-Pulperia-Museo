@@ -9,6 +9,7 @@ const empty = {
   category: 'Casa',
   status: 'draft',
   cover: '',
+  image2: '',
 }
 
 const categories = ['Casa', 'Salas', 'Patio', 'Cronología', 'Visita']
@@ -56,11 +57,11 @@ export default function ArticleEditor() {
     setForm((prev) => ({ ...prev, [field]: value }))
   }
 
-  function handleCover(event) {
+  function handleImage(field, event) {
     const file = event.target.files?.[0]
     if (!file) return
     const reader = new FileReader()
-    reader.onload = () => update('cover', String(reader.result))
+    reader.onload = () => update(field, String(reader.result))
     reader.readAsDataURL(file)
   }
 
@@ -167,16 +168,33 @@ export default function ArticleEditor() {
         </label>
 
         <div className="text-sm">
-          <span className="mb-1.5 block text-ink-soft">Imagen de portada</span>
+          <span className="mb-1.5 block text-ink-soft">Imagen 1 · portada</span>
           <input
             type="file"
             accept="image/*"
-            onChange={handleCover}
+            onChange={(event) => handleImage('cover', event)}
             className="block w-full text-sm text-ink-soft file:mr-3 file:border-0 file:bg-carmesi file:px-3 file:py-2 file:text-sm file:font-semibold file:uppercase file:tracking-wide file:text-white hover:file:bg-carmesi-oscuro"
           />
           {form.cover ? (
             <img
               src={form.cover}
+              alt=""
+              className="mt-3 max-h-48 w-full object-cover"
+            />
+          ) : null}
+        </div>
+
+        <div className="text-sm">
+          <span className="mb-1.5 block text-ink-soft">Imagen 2 · apoyo</span>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(event) => handleImage('image2', event)}
+            className="block w-full text-sm text-ink-soft file:mr-3 file:border-0 file:bg-carmesi file:px-3 file:py-2 file:text-sm file:font-semibold file:uppercase file:tracking-wide file:text-white hover:file:bg-carmesi-oscuro"
+          />
+          {form.image2 ? (
+            <img
+              src={form.image2}
               alt=""
               className="mt-3 max-h-48 w-full object-cover"
             />

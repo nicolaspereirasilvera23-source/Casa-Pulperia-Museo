@@ -37,6 +37,7 @@ export function saveArticle(payload) {
     category: payload.category,
     status: payload.status,
     cover: payload.cover,
+    image2: payload.image2,
   })
   const headers = { 'Content-Type': 'application/json' }
 

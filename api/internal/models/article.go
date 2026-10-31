@@ -16,15 +16,16 @@ var categories = map[string]struct{}{
 }
 
 type Article struct {
-	ID        string    `json:"id" bson:"_id"`
-	Title     string    `json:"title" bson:"title"`
-	Excerpt   string    `json:"excerpt" bson:"excerpt"`
-	Content   string    `json:"content" bson:"content"`
-	Category  string    `json:"category" bson:"category"`
-	Status    string    `json:"status" bson:"status"`
-	Cover     string    `json:"cover" bson:"cover"`
-	CreatedAt time.Time `json:"createdAt" bson:"createdAt"`
-	UpdatedAt time.Time `json:"updatedAt" bson:"updatedAt"`
+	ID        string    `json:"id"`
+	Title     string    `json:"title"`
+	Excerpt   string    `json:"excerpt"`
+	Content   string    `json:"content"`
+	Category  string    `json:"category"`
+	Status    string    `json:"status"`
+	Cover     string    `json:"cover"`
+	Image2    string    `json:"image2"`
+	CreatedAt time.Time `json:"createdAt"`
+	UpdatedAt time.Time `json:"updatedAt"`
 }
 
 type ArticleInput struct {
@@ -34,6 +35,7 @@ type ArticleInput struct {
 	Category string `json:"category"`
 	Status   string `json:"status"`
 	Cover    string `json:"cover"`
+	Image2   string `json:"image2"`
 }
 
 func ValidCategory(value string) bool {

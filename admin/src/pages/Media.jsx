@@ -11,7 +11,7 @@ export default function Media() {
     let active = true
     listArticles()
       .then((items) => {
-        if (active) setCovers(items.filter((item) => item.cover))
+        if (active) setCovers(items.filter((item) => item.cover || item.image2))
       })
       .catch((err) => {
         if (active) setError(err.message)
@@ -56,16 +56,15 @@ export default function Media() {
         </div>
       ) : (
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {covers.map((item) => (
-            <li key={item.id} className="border border-paper-line bg-paper">
-              <img
-                src={item.cover}
-                alt=""
-                className="h-44 w-full object-cover"
-              />
-              <p className="truncate px-3 py-3 text-sm font-medium">{item.title}</p>
+          {covers.flatMap((item) => [
+            item.cover && { key: `${item.id}-cover`, src: item.cover, label: 'Portada' },
+            item.image2 && { key: `${item.id}-image2`, src: item.image2, label: 'Imagen 2' },
+          ].filter(Boolean).map((image) => (
+            <li key={image.key} className="border border-paper-line bg-paper">
+              <img src={image.src} alt="" className="h-44 w-full object-cover" />
+              <p className="truncate px-3 py-3 text-sm font-medium">{item.title} · {image.label}</p>
             </li>
-          ))}
+          )))}
         </ul>
       )}
     </div>

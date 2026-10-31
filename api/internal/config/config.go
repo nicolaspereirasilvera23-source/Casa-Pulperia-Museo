@@ -8,8 +8,7 @@ import (
 
 type Config struct {
 	Port         string
-	MongoURI     string
-	MongoDB      string
+	SQLitePath   string
 	ClientDir    string
 	ResendAPIKey string
 	ResendFrom   string
@@ -21,8 +20,7 @@ func Load() Config {
 
 	return Config{
 		Port:         getEnv("PORT", "8080"),
-		MongoURI:     getEnv("MONGO_URI", "mongodb://localhost:27017"),
-		MongoDB:      getEnv("MONGO_DB", "articulos"),
+		SQLitePath:   getEnv("SQLITE_PATH", "./data/articulos.db"),
 		ClientDir:    getEnv("CLIENT_DIR", "../client"),
 		ResendAPIKey: getEnv("RESEND_API_KEY", ""),
 		ResendFrom:   getEnv("RESEND_FROM", "onboarding@resend.dev"),

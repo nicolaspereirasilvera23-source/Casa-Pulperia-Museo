@@ -1,6 +1,7 @@
 package server
 
 import (
+	"database/sql"
 	"fmt"
 	"net/http"
 	"os"
@@ -9,15 +10,13 @@ import (
 	"api/internal/config"
 	"api/internal/handlers"
 	"api/internal/repository"
-
-	"go.mongodb.org/mongo-driver/v2/mongo"
 )
 
 type Server struct {
 	httpServer *http.Server
 }
 
-func New(cfg config.Config, db *mongo.Database) (*Server, error) {
+func New(cfg config.Config, db *sql.DB) (*Server, error) {
 	clientDir, err := resolveClientDir(cfg.ClientDir)
 	if err != nil {
 		return nil, err
